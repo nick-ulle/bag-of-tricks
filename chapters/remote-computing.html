@@ -189,6 +189,28 @@ const thebe_selector_output = ".output, .cell_output"
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#farm">
+   Farm
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#gpu-nodes">
+     GPU Nodes
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#running-jupyter-rstudio-remotely">
+     Running Jupyter/RStudio Remotely
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#shell-tips-tricks">
+   Shell Tips &amp; Tricks
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#initial-setup">
    Initial Setup
   </a>
@@ -204,7 +226,8 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#main-environment">
+    <a class="reference internal nav-link" href="#the-main-environment">
+     The
      <code class="docutils literal notranslate">
       <span class="pre">
        main
@@ -223,17 +246,12 @@ const thebe_selector_output = ".output, .cell_output"
      Neovim
     </a>
    </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#git-workflow">
+     Git Workflow
+    </a>
+   </li>
   </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#git-workflow">
-   Git Workflow
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#farm">
-   Farm
-  </a>
  </li>
 </ul>
 
@@ -256,6 +274,28 @@ const thebe_selector_output = ".output, .cell_output"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#farm">
+   Farm
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#gpu-nodes">
+     GPU Nodes
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#running-jupyter-rstudio-remotely">
+     Running Jupyter/RStudio Remotely
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#shell-tips-tricks">
+   Shell Tips &amp; Tricks
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#initial-setup">
    Initial Setup
   </a>
@@ -271,7 +311,8 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#main-environment">
+    <a class="reference internal nav-link" href="#the-main-environment">
+     The
      <code class="docutils literal notranslate">
       <span class="pre">
        main
@@ -290,17 +331,12 @@ const thebe_selector_output = ".output, .cell_output"
      Neovim
     </a>
    </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#git-workflow">
+     Git Workflow
+    </a>
+   </li>
   </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#git-workflow">
-   Git Workflow
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#farm">
-   Farm
-  </a>
  </li>
 </ul>
 
@@ -313,10 +349,70 @@ const thebe_selector_output = ".output, .cell_output"
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="remote-computing">
 <h1>Remote Computing<a class="headerlink" href="#remote-computing" title="Permalink to this headline">¶</a></h1>
-<p>This chapter describes how to get set up quickly in a new (remote) computing
-environment.</p>
+<p>This chapter is a collection of workflows, tips, and tricks for remote
+computing.</p>
+<div class="section" id="farm">
+<h2>Farm<a class="headerlink" href="#farm" title="Permalink to this headline">¶</a></h2>
+<p>You can launch a 4-hour interactive session with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">srun</span> <span class="o">--</span><span class="n">partition</span><span class="o">=</span><span class="n">med</span> <span class="o">--</span><span class="n">time</span><span class="o">=</span><span class="mi">4</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span> <span class="o">--</span><span class="n">unbuffered</span> <span class="o">--</span><span class="n">pty</span> <span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">bash</span> <span class="o">-</span><span class="n">il</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">-il</span></code> argument to bash makes the shell an interactive login shell.</p>
+<p>View partitions available for use:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>sacctmgr show associations where <span class="nv">user</span><span class="o">=</span>nulle  <span class="p">|</span> less -S
+</pre></div>
+</div>
+<div class="section" id="gpu-nodes">
+<h3>GPU Nodes<a class="headerlink" href="#gpu-nodes" title="Permalink to this headline">¶</a></h3>
+<p>The DataLab GPU slice is partition <code class="docutils literal notranslate"><span class="pre">gpu-a100-h</span></code> and is only accessible from the
+<code class="docutils literal notranslate"><span class="pre">datalabgrp</span></code> account. You can launch a 4-hour interactive session on the
+DataLab GPU slice with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">srun</span> <span class="o">--</span><span class="n">account</span><span class="o">=</span><span class="n">datalabgrp</span> <span class="o">--</span><span class="n">partition</span><span class="o">=</span><span class="n">gpu</span><span class="o">-</span><span class="n">a100</span><span class="o">-</span><span class="n">h</span> <span class="o">--</span><span class="n">gres</span><span class="o">=</span><span class="n">gpu</span><span class="p">:</span><span class="mi">1</span> \
+  <span class="o">--</span><span class="n">time</span><span class="o">=</span><span class="mi">4</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span> <span class="o">--</span><span class="n">unbuffered</span> <span class="o">--</span><span class="n">pty</span> <span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">bash</span> <span class="o">-</span><span class="n">il</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">--gres=gpu:NUM</span></code> argument sets the number of GPUs available, and is
+necessary to use a GPU on any of Farm’s GPU-enabled nodes. On nodes with more
+than 1 GPU, <code class="docutils literal notranslate"><span class="pre">NUM</span></code> can be set to the number of GPUs needed.</p>
+</div>
+<div class="section" id="running-jupyter-rstudio-remotely">
+<h3>Running Jupyter/RStudio Remotely<a class="headerlink" href="#running-jupyter-rstudio-remotely" title="Permalink to this headline">¶</a></h3>
+<p>Use SLURM to launch an interactive session as usual.</p>
+<p><strong>On the allocated node</strong>, get the hostname:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>hostname -f <span class="p">|</span> cut -d <span class="s2">&quot;.&quot;</span> -f1
+</pre></div>
+</div>
+<p>Then launch Jupyter:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>jupyter lab --no-browser --ip<span class="o">=</span>HOSTNAME --port<span class="o">=</span><span class="m">8888</span>
+</pre></div>
+</div>
+<p>The port can be pretty much any large number (edited)</p>
+<p><strong>On your local machine</strong>, use <code class="docutils literal notranslate"><span class="pre">ssh</span></code> to forward local connections to the port
+to the allocated node on Farm:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>ssh farm -N -L <span class="m">8888</span>:HOSTNAME:8888
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">-L</span></code> argument sets up forwarding and the <code class="docutils literal notranslate"><span class="pre">-N</span></code> argument prevents <code class="docutils literal notranslate"><span class="pre">ssh</span></code> from
+opening a login shell.</p>
+<p>You can then access Jupyter at <a class="reference external" href="http://localhost:8888/">http://localhost:8888/</a>.</p>
+</div>
+</div>
+<div class="section" id="shell-tips-tricks">
+<h2>Shell Tips &amp; Tricks<a class="headerlink" href="#shell-tips-tricks" title="Permalink to this headline">¶</a></h2>
+<p>Redirect all output to a file:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>./script.sh <span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span> &gt; output.log
+</pre></div>
+</div>
+<p>See <a class="reference external" href="https://stackoverflow.com/a/818284">this StackOverflow post</a>.</p>
+<p>Display output on screen and save to a file:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>./script.sh <span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span> <span class="p">|</span> tee output.log
+</pre></div>
+</div>
+</div>
 <div class="section" id="initial-setup">
 <h2>Initial Setup<a class="headerlink" href="#initial-setup" title="Permalink to this headline">¶</a></h2>
+<p>This section describes how to get set up quickly in a new (remote) computing
+environment.</p>
 <p>Create an <code class="docutils literal notranslate"><span class="pre">~/env</span></code> directory to store files related to the computing
 environment:</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>mkdir ~/env
@@ -367,8 +463,8 @@ installed</a>, so if it breaks, your entire conda install breaks.</p>
 the correct directories.</p>
 </div>
 </div>
-<div class="section" id="main-environment">
-<h3><code class="docutils literal notranslate"><span class="pre">main</span></code> Environment<a class="headerlink" href="#main-environment" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="the-main-environment">
+<h3>The <code class="docutils literal notranslate"><span class="pre">main</span></code> Environment<a class="headerlink" href="#the-main-environment" title="Permalink to this headline">¶</a></h3>
 <p>Create and activate the <code class="docutils literal notranslate"><span class="pre">main</span></code> environment:</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>conda create -n main
 conda activate main
@@ -420,12 +516,31 @@ this environment by default on login.</p>
 executable.</p>
 <p>For shorter deployments, just alias <code class="docutils literal notranslate"><span class="pre">nvim</span></code> to <code class="docutils literal notranslate"><span class="pre">vim</span></code> in <code class="docutils literal notranslate"><span class="pre">~/.bashrc</span></code>.</p>
 </div>
-</div>
 <div class="section" id="git-workflow">
-<h2>Git Workflow<a class="headerlink" href="#git-workflow" title="Permalink to this headline">¶</a></h2>
+<h3>Git Workflow<a class="headerlink" href="#git-workflow" title="Permalink to this headline">¶</a></h3>
+<p>Set up a repository on GitHub and push some commits. Log into the server and
+create a <code class="docutils literal notranslate"><span class="pre">~/bare_repos</span></code> directory:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>mkdir bare_repos
+</pre></div>
 </div>
-<div class="section" id="farm">
-<h2>Farm<a class="headerlink" href="#farm" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> bare_repos
+mkdir dotfiles-remote
+</pre></div>
+</div>
+<p>In the local repo (on your machine) add the server as a remote:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>git remote add datasci nulle@datasci:~/bare_repos/dotfiles-remote
+</pre></div>
+</div>
+<p>Then:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>git push datasci main
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="o">--</span><span class="n">branch</span> <span class="n">main</span> <span class="n">bare_repos</span><span class="o">/</span><span class="n">dotfiles</span><span class="o">-</span><span class="n">remote</span> <span class="o">.</span><span class="n">dotfiles</span>
+<span class="n">cd</span> <span class="o">.</span><span class="n">dotfiles</span>
+<span class="c1">#git checkout main</span>
+</pre></div>
+</div>
+</div>
 </div>
 </div>
 
