@@ -377,7 +377,8 @@ than 1 GPU, <code class="docutils literal notranslate"><span class="pre">NUM</sp
 </div>
 <div class="section" id="running-jupyter-rstudio-remotely">
 <h3>Running Jupyter/RStudio Remotely<a class="headerlink" href="#running-jupyter-rstudio-remotely" title="Permalink to this headline">¶</a></h3>
-<p>Use SLURM to launch an interactive session as usual.</p>
+<p>Use SLURM to launch an interactive session as described in the previous
+sections.</p>
 <p><strong>On the allocated node</strong>, get the hostname:</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>hostname -f <span class="p">|</span> cut -d <span class="s2">&quot;.&quot;</span> -f1
 </pre></div>
@@ -386,7 +387,7 @@ than 1 GPU, <code class="docutils literal notranslate"><span class="pre">NUM</sp
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>jupyter lab --no-browser --ip<span class="o">=</span>HOSTNAME --port<span class="o">=</span><span class="m">8888</span>
 </pre></div>
 </div>
-<p>The port can be pretty much any large number (edited)</p>
+<p>The port can be pretty much any large number.</p>
 <p><strong>On your local machine</strong>, use <code class="docutils literal notranslate"><span class="pre">ssh</span></code> to forward local connections to the port
 to the allocated node on Farm:</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>ssh farm -N -L <span class="m">8888</span>:HOSTNAME:8888
