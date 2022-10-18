@@ -42,7 +42,8 @@ than 1 GPU, `NUM` can be set to the number of GPUs needed.
 
 ### Running Jupyter/RStudio Remotely
 
-Use SLURM to launch an interactive session as usual.
+Use SLURM to launch an interactive session as described in the previous
+sections.
 
 **On the allocated node**, get the hostname:
 
@@ -57,7 +58,7 @@ jupyter lab --no-browser --ip=HOSTNAME --port=8888
 ```
 
 
-The port can be pretty much any large number (edited) 
+The port can be pretty much any large number.
 
 **On your local machine**, use `ssh` to forward local connections to the port
 to the allocated node on Farm:
