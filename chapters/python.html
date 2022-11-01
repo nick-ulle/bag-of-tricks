@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Project Management &#8212; Nick&#39;s Bag of Tricks</title>
+    <title>Python &#8212; Nick&#39;s Bag of Tricks</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -51,8 +51,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Python" href="python.html" />
-    <link rel="prev" title="Overview" href="index.html" />
+    <link rel="next" title="Remote Computing" href="remote-computing.html" />
+    <link rel="prev" title="Project Management" href="project-management.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -92,13 +92,13 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
 </ul>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="project-management.html">
    Project Management
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="python.html">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    Python
   </a>
  </li>
@@ -148,7 +148,7 @@ const thebe_selector_output = ".output, .cell_output"
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/chapters/project-management.md"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/chapters/python.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
@@ -168,7 +168,7 @@ const thebe_selector_output = ".output, .cell_output"
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/nick-ulle/workflow-datasci/issues/new?title=Issue%20on%20page%20%2Fchapters/project-management.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/nick-ulle/workflow-datasci/issues/new?title=Issue%20on%20page%20%2Fchapters/python.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -189,6 +189,19 @@ const thebe_selector_output = ".output, .cell_output"
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#notebooks-with-scripts">
+   Notebooks with Scripts
+  </a>
+ </li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -196,21 +209,54 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Project Management</h1>
+                <h1>Python</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#notebooks-with-scripts">
+   Notebooks with Scripts
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="project-management">
-<h1>Project Management<a class="headerlink" href="#project-management" title="Permalink to this headline">¶</a></h1>
-<p>This chapter describes how to organize projects and ensure results are
-reproducible.</p>
+  <div class="tex2jax_ignore mathjax_ignore section" id="python">
+<h1>Python<a class="headerlink" href="#python" title="Permalink to this headline">¶</a></h1>
+<p>This chapter is about <a class="reference external" href="https://www.python.org/">Python</a>.</p>
+<div class="section" id="notebooks-with-scripts">
+<h2>Notebooks with Scripts<a class="headerlink" href="#notebooks-with-scripts" title="Permalink to this headline">¶</a></h2>
+<p>My project repos typically have a <code class="docutils literal notranslate"><span class="pre">src/</span></code> directory for code and a <code class="docutils literal notranslate"><span class="pre">notebooks/</span></code>
+directory for notebooks, both at the top level. The notebooks tend to contain
+experiments and exploratory data analyses. When some processing code seems
+reasonably figured-out and stable, I migrate the code into a Python script so
+that I can easily reuse it wherever I need it.</p>
+<p>By default, Python only searches for scripts to import in the startup
+directory. For notebooks, that’s <code class="docutils literal notranslate"><span class="pre">notebooks/</span></code>, and so most of the scripts I’d
+want to import are in <code class="docutils literal notranslate"><span class="pre">../src/</span></code>. Adding this code to a cell at the beginning of
+a notebook tells Python to also search <code class="docutils literal notranslate"><span class="pre">../src/</span></code> when something is imported:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Allow imports from `../src/`</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="n">module_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s2">&quot;..&quot;</span><span class="p">,</span> <span class="s2">&quot;src&quot;</span><span class="p">))</span>
+<span class="k">if</span> <span class="n">module_path</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="p">:</span>
+    <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">module_path</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -238,17 +284,17 @@ reproducible.</p>
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="index.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="project-management.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Overview</p>
+            <p class="prev-next-title">Project Management</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="python.html" title="next page">
+    <a class='right-next' id="next-link" href="remote-computing.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Python</p>
+        <p class="prev-next-title">Remote Computing</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
