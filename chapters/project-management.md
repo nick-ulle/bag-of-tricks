@@ -32,3 +32,18 @@ You can use the `--tags` flag instead to push all tags.
 
 You can use `git tag` with `-d` to remove a tag or `-f` to force update a tag.
 
+
+### Purging Files
+
+GitHub has a [helpful tutorial about purging files][gh-purge].
+
+[gh-purge]: https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/removing-sensitive-data-from-a-repository
+
+The simplest way to purge files is to use the [BFG Repo Cleaner][bfg], which is
+available [through conda-forge][conda-bfg]. To purge a file or directory, first
+remove it with `git rm` and `git commit`. Then run `bfg` with either the
+`--delete-files` flag or the `--delete-folders` flag. Both use glob syntax and
+search the entire repository (so the argument is a pattern, not a path).
+
+[bfg]: https://rtyley.github.io/bfg-repo-cleaner/
+[conda-bfg]: https://anaconda.org/conda-forge/bfg
