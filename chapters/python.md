@@ -17,15 +17,20 @@ that I can easily reuse it wherever I need it.
 
 By default, Python only searches for scripts to import in the startup
 directory. For notebooks, that's `notebooks/`, and so most of the scripts I'd
-want to import are in `../src/`. Adding this code to a cell at the beginning of
-a notebook tells Python to also search `../src/` when something is imported:
+want to import are in `../src/`. One way to solve this is to design `src/` as a
+package and add this code to a cell at the beginning of each notebook, so that
+Python searches `..` when something is imported:
 
 ```python
-# Allow imports from `../src/`
+# Allow imports from `..`
 import os
 import sys
 
-module_path = os.path.abspath(os.path.join("..", "src"))
+module_path = os.path.abspath("..")
 if module_path not in sys.path:
     sys.path.append(module_path)
 ```
+
+Then `import src` in the notebooks.
+
+You can also run scripts from within the package with `python -m`.
