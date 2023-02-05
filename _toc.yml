@@ -9,6 +9,7 @@ root: chapters/index
 
 # Chapters may be written in either Markdown or as Jupyter Notebooks
 chapters:
+  - file: chapters/environment-setup
   - file: chapters/project-management
   - file: chapters/python
   - file: chapters/remote-computing
