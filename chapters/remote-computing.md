@@ -73,20 +73,47 @@ opening a login shell.
 You can then access Jupyter at <http://localhost:8888/>.
 
 
+Git Workflow
+------------
 
-Shell Tips & Tricks
--------------------
+On your computer, set up a local repository and make some commits.
 
-Redirect all output to a file:
+On the remote server, create a `~/bare_repos` directory:
 
 ```sh
-./script.sh 2>&1 > output.log
+mkdir bare_repos
 ```
 
-See [this StackOverflow post](https://stackoverflow.com/a/818284).
-
-Display output on screen and save to a file:
+Then initialize a bare repo for the repo you want to work with on the server:
 
 ```sh
-./script.sh 2>&1 | tee output.log
+cd bare_repos
+git init --bare REPO_NAME
+```
+
+In the local repo on your computer, add the bare repo on the server as a remote
+repo:
+
+```sh
+git remote add farm nulle@farm:~/bare_repos/REPO_NAME
+```
+
+Then push to the remote repo:
+
+```sh
+git push farm main
+```
+
+Finally, on the server, clone the bare repo so that you can work on it:
+
+```
+git clone --branch main bare_repos/REPO_NAME REPO_NAME
+#git checkout main
+```
+
+Now you can commit and push on the server. To pull commits from the server to
+your computer, run:
+
+```
+git pull farm main
 ```

@@ -152,37 +152,3 @@ executable.
 For shorter deployments, just alias `nvim` to `vim` in `~/.bashrc`.
 
 [neovim]: https://github.com/neovim/neovim/wiki/Installing-Neovim#appimage-universal-linux-package
-
-
-Git Workflow
-------------
-
-Set up a repository on GitHub and push some commits. Log into the server and
-create a `~/bare_repos` directory:
-
-```sh
-mkdir bare_repos
-```
-
-```sh
-cd bare_repos
-mkdir dotfiles-remote
-```
-
-In the local repo (on your machine) add the server as a remote:
-
-```sh
-git remote add datasci nulle@datasci:~/bare_repos/dotfiles-remote
-```
-
-Then:
-
-```sh
-git push datasci main
-```
-
-```
-git clone --branch main bare_repos/dotfiles-remote .dotfiles
-cd .dotfiles
-#git checkout main
-```

@@ -8,8 +8,17 @@ root: chapters/index
 #  numbered: false
 
 # Chapters may be written in either Markdown or as Jupyter Notebooks
-chapters:
-  - file: chapters/environment-setup
-  - file: chapters/project-management
-  - file: chapters/python
-  - file: chapters/remote-computing
+parts:
+  - caption: Research Computing
+    numbered: false
+    chapters:
+      - file: chapters/project-management
+      - file: chapters/python
+      - file: chapters/remote-computing
+  # - caption: Statistics
+    # chapters:
+  - caption: System Administration
+    numbered: false
+    chapters:
+      - file: chapters/linux
+      - file: chapters/environment-setup
