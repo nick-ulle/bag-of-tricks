@@ -5,6 +5,24 @@ This chapter describes how to organize projects and ensure results are
 reproducible.
 
 
+Shell Tips & Tricks
+-------------------
+
+Redirect all output to a file:
+
+```sh
+./script.sh 2>&1 > output.log
+```
+
+See [this StackOverflow post](https://stackoverflow.com/a/818284).
+
+Display output on screen and save to a file:
+
+```sh
+./script.sh 2>&1 | tee output.log
+```
+
+
 Git
 ---
 
@@ -47,3 +65,12 @@ search the entire repository (so the argument is a pattern, not a path).
 
 [bfg]: https://rtyley.github.io/bfg-repo-cleaner/
 [conda-bfg]: https://anaconda.org/conda-forge/bfg
+
+
+### Committing on Behalf of Others
+
+To make a commit on behalf of someone else, run:
+
+```
+git commit --author "NAME <EMAIL@ucdavis.edu>"
+```
