@@ -1,6 +1,6 @@
 # Nick's Bag of Tricks
 
-* [Reader](https://nick-ulle.github.io/workflow-datasci/)
+[top]: #nicks-bag-of-tricks
 
 
 ## Contributing
@@ -10,55 +10,73 @@ curriculum content and post it to a public-facing site for learners.
 
 To make alterations to the reader:
 
-1.  Run `git pull`, or if it's your first time contributing, see the
-    [Setup](#setup) section of this document.
+1.  Pull changes from upstream with `git pull`.
 
-2.  Edit an existing chapter file or create a new one. Chapter files may be 
-    either Markdown files (`.md`) or Jupyter Notebook files (`.ipynb`). Either 
-    is fine, but you must remain consistent across the reader (i.e. don't mix 
-    and match filetypes). Put all chapter filess in the `chapters/` directory.
-    Enter your text, code, and other information directly into the file. Make 
-    sure your file:
+2.  Edit files; then `git add`, `git commit`, and `git push` your changes.
 
-    - Follows the naming scheme `##_topic-of-chapter.md/ipynb` (the only 
-      exception is `index.md/ipynb`, which contains the reader's front page).
-    - Begins with a first-level header (like `# This`). This will be the title
-      of your chapter. Subsequent section headers should be second-level
-      headers (like `## This`) or below.
+4.  Run `pixi run build` in a shell to regenerate the HTML files in the
+    `_build/`.
 
-    Put any supporting resources in `data/` or `img/`.
-
-3.  Run the command `jupyter-book build .` in a shell at the top level of the
-    repo to regenerate the HTML files in the `_build/`.
-
-4.  When you're finished, `git add`:
-    - Any files you edited directly
-    - Any supporting media you added to `img/`
-
-    Then `git commit` and `git push`. This updates the `main` branch of the
-    repo, which contains source materials for the web page (but not the web
-    page itself).
-
-5.  Run the command `ghp-import -n -p -f _build/html` in a shell at the top
-    level of the repo to update the `gh-pages` branch of the repo. This uses
-    the [`ghp-import` Python package][ghp-import], which you will need to
-    install first (`pip install ghp-import`). The live web page will update
-    automatically after 1-10 minutes.
+5.  Run `pixi run publish` in a shell to update the `gh-pages` branch of the
+    repo. This uses the [`ghp-import` Python package][ghp-import]. The live web
+    page will update automatically after 1-10 minutes.
 
 [ghp-import]: https://github.com/c-w/ghp-import
 
+([back to top][top])
 
-## Setup
 
-### Python Packages
+## Installation
 
-We recommend using [conda][] to manage Python dependencies. The `env.yaml` file
-in this repo contains a list of packages necessary to build the reader. You can
-create a new conda environment with all of the packages listed in that file
-with this shell command:
+To get started, open a terminal (Git Bash on Windows) and `git clone` a copy of
+this repo.
+
+Then follow the instructions in the next section to set up the necessary
+software environment.
+
+
+### Pixi
+
+We *strongly recommend* using [Pixi][], a fast package manager based on the
+conda ecosystem, to install the packages required by this repo. To install
+Pixi, follow [the official instructions][pixi]. If you prefer not to use Pixi,
+it's also possible to manually install the packages using conda or mamba.
+
+[pixi]: https://pixi.sh/
+
+The `pixi.toml` file in this repo lists required packages, while the
+`pixi.lock` file lists package versions for each platform. When the lock file
+is present, Pixi will attempt to install the exact versions listed. Deleting
+the lock file allows Pixi to install other versions, which might help if
+installation fails (but beware of inconsistencies between package versions).
+
+To install the required packages, open a terminal and navigate to this repo's
+directory. Then run:
 
 ```sh
-conda env create --file env.yaml
+pixi install
 ```
 
-[conda]: https://docs.conda.io/en/latest/
+This will automatically create a virtual environment and install the packages.
+
+To open a shell in the virtual environment, run:
+
+```sh
+pixi shell
+```
+
+You can run the `pixi shell` command from the repo directory or any of its
+subdirectories. Use the virtual environment to run any commands related to this
+repo. When you're finished using the virtual environment, you can use the
+`exit` command to exit the shell.
+
+> [!NOTE]
+> If you're using Windows and Git Bash, the `pixi shell` command is [not yet
+> supported][pixi-shell-win]. Instead, you can use the `pixi run` command to
+> run commands in the virtual environment. See [the pixi
+> documentation][pixi-basics] for examples of how to use `pixi run`.
+
+[pixi-shell-win]: https://github.com/prefix-dev/pixi/issues/417
+[pixi-basics]: https://pixi.sh/latest/basic_usage/
+
+([back to top][top])
