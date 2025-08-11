@@ -35,6 +35,39 @@ Then `import src` in the notebooks.
 
 You can also run scripts from within the package with `python -m`.
 
+Paired Notebooks
+----------------
+
+Jupyter notebooks can be stored in Markdown format (`.md`) via [Jupytext][].
+This makes it easier to see changes to the notebooks in version control and
+also avoids committing large images to the repo.
+
+[Jupytext]: https://jupytext.readthedocs.io/en/latest/
+
+Whenever you create a new Jupyter notebook, say `notebook.ipynb`, run this
+command to make it a **paired notebook** and generate a corresponding
+`notebook.md` file:
+
+```sh
+jupytext --set-formats 'ipynb,md' notebook.ipynb
+```
+
+The `notebook.md` file is the one to commit. Once a notebook is paired, the two
+files will automatically be kept in sync as long as you run Jupyter in an
+environment that has Jupytext installed.
+
+If you over need to manually sync a paired notebook, the command is:
+
+```sh
+jupytext --sync notebook.ipynb
+```
+Be careful when doing this, because if you've somehow ended up with changes to
+both `notebook.ipynb` and `notebook.md`, the older changes will be overwritten!
+
+See the [Jupytext CLI docs][jupytext-cli] for more info.
+
+[jupytext-cli]: https://jupytext.readthedocs.io/en/latest/using-cli.html
+
 
 Pandas
 ------
