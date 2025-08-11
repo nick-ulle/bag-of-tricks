@@ -1,0 +1,20 @@
+[workspace]
+authors = ["Nick Ulle <nick.ulle@gmail.com>"]
+channels = ["conda-forge"]
+name = "bag-of-tricks"
+platforms = ["linux-64"]
+version = "0.1.0"
+
+
+[tasks]
+build = { cmd = "jupyter book build .", description = "Build the reader." }
+publish = { cmd = "ghp-import --no-jekyll --no-history --push _build/html", description = "Publish the reader to the `gh-pages` branch on GitHub." }
+clean = { cmd = "rm -rf _build/", description = "Remove the build directory." }
+rebuild = { depends-on = ["clean", "build"], description = "Remove the build directory and build the reader." }
+
+
+[dependencies]
+python = ">=3.13.5,<3.14"
+ghp-import = ">=2.1.0,<3"
+jupyter-book = ">=1.0.4.post1,<2"
+jupyter = ">=1.1.1,<2"
