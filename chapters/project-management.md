@@ -1,16 +1,14 @@
-Project Management
-==================
+# Project Management
 
 This chapter describes how to organize projects and ensure results are
 reproducible.
 
 
-Shell Tips & Tricks
--------------------
+## Shell Tips & Tricks
 
 Redirect all output to a file:
 
-```sh
+```bash
 ./script.sh 2>&1 > output.log
 ```
 
@@ -18,19 +16,18 @@ See [this StackOverflow post](https://stackoverflow.com/a/818284).
 
 Display output on screen and save to a file:
 
-```sh
+```bash
 ./script.sh 2>&1 | tee output.log
 ```
 
 
-Git
----
+## Git
 
 ### Tags
 
 To tag a workshop reader run (for example):
 
-```sh
+```bash
 git tag -a 2022-spring -m "The reader used for Spring 2022."
 ```
 
@@ -42,7 +39,7 @@ optionally specify a commit number as the final argument to tag a past commit.
 
 To push a tag, run:
 
-```sh
+```bash
 git push origin 2022-spring
 ```
 
@@ -71,6 +68,19 @@ search the entire repository (so the argument is a pattern, not a path).
 
 To make a commit on behalf of someone else, run:
 
-```
+```bash
 git commit --author "NAME <EMAIL@ucdavis.edu>"
 ```
+
+
+## Backups
+
+Back up an entire partition on Linux with `dd`. For example:
+
+```bash
+dd if=/dev/sda4 of=home.img bs=64K conv=noerror,sync status=progress
+```
+
+Also see the Arch Linux Wiki's [Disk cloning][archwiki-disk-cloning] page.
+
+[archwiki-disk-cloning]: https://wiki.archlinux.org/title/Disk_cloning
