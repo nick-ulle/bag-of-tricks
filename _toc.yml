@@ -15,6 +15,7 @@ parts:
       - file: chapters/project-management
       - file: chapters/python
       - file: chapters/remote-computing
+      - file: chapters/teaching
   # - caption: Statistics
     # chapters:
   - caption: System Administration
