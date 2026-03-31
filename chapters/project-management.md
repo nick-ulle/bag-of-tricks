@@ -72,6 +72,14 @@ To make a commit on behalf of someone else, run:
 git commit --author "NAME <EMAIL@ucdavis.edu>"
 ```
 
+### Committing with Others
+
+To coauthor a commit, add lines like this to the end of the commit message:
+
+```none
+Co-authored-by: NAME <EMAIL@ucdavis.edu>
+```
+
 
 ## Backups
 
